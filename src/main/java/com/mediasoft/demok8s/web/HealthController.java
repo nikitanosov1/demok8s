@@ -10,7 +10,7 @@ public class HealthController {
     @Value("${app.healthCheckMsg}")
     private String msg;
 
-    @GetMapping("/health")
+    @GetMapping("/healthcheck")
     public HealthCheck healthCheck() {
         System.out.println("request");
         return HealthCheck.builder()
