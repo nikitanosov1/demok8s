@@ -24,6 +24,8 @@ kubectl get nodes
 kubectl describe node minikube
 minikube ip
 
+Добавить днс имя кластера в etc/host. для винды C:\Windows\System32\drivers\etc (использовать полученный айпи)
+
 ### Просмотр ресурсов кластера:
 kubectl get all --all-namespaces
 kubectl get namespaces
@@ -53,6 +55,7 @@ helm uninstall myhelm
 
 ### Настройка nginx ingress балансировщика в кластеер:
 minikube addons enable ingress
+minikube addons disable ingress
 
 - В случае ошибки при делое приложения через helm
 
@@ -61,6 +64,6 @@ minikube addons enable ingress
 
   необходимо выполнить:
     ```
-    get ValidatingWebhookConfiguration
+    kubectl get ValidatingWebhookConfiguration
     kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
     ```
