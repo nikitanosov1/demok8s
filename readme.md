@@ -1,5 +1,14 @@
 demok8s
 
+Сборка имейджа:
+1. gradle build
+2. docker build .
+3. docker images
+4. docker tag <image_id> gurok/demok8s (можно сразу было "docker build -t gurok/demok8s .")
+5. docker login -u <user> -p <password>
+6. docker push gurok/demok8s
+
+
 kubectl version
 minikube status
 docker version
