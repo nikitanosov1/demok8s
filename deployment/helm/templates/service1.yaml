@@ -14,4 +14,6 @@ spec:
       name: actuator
       port: 9099
       targetPort: 9090
-  type: NodePort
+  type: ClusterIP
+#  clusterIP: None #взамен type: ClusterIp
+

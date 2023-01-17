@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demok8s-replicaset
+  name: demok8s-deployment
   labels:
     app: demok8s-app
 spec:
@@ -34,13 +34,13 @@ spec:
           readinessProbe:
             httpGet:
               port: 8000
-              path: /health
+              path: /healthcheck
             failureThreshold: 1
             periodSeconds: 10
           startupProbe:
             httpGet:
               port: 8000
-              path: /health
+              path: /healthcheck
             failureThreshold: 30
             periodSeconds: 10
 
@@ -50,3 +50,5 @@ spec:
                 configMapKeyRef:
                   name: demok8s-configmap
                   key: HEALTH_MSG
+            - name: SPRING_PROFILES_ACTIVE
+              value: "local"

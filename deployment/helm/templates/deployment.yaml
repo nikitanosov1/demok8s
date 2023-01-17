@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demok8s-replicaset
+  name: demok8s-deployment
   labels:
     app: demok8s-app
 spec:
 #  strategy:
-#    type: RollingUpdate
+#    type: RollingUpdate #еще есть Recreate
   replicas: 3
   selector:
     matchLabels:
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: demok8s-app
-          image: gurok/demok8s:2
+          image: gurok/demok8s:latest
           ports:
             - containerPort: 8000
               name: app
@@ -34,13 +34,13 @@ spec:
           readinessProbe:
             httpGet:
               port: 8000
-              path: /health
+              path: /healthcheck
             failureThreshold: 1
             periodSeconds: 10
           startupProbe:
             httpGet:
               port: 8000
-              path: /health
+              path: /healthcheck
             failureThreshold: 30
             periodSeconds: 10
 
@@ -50,3 +50,5 @@ spec:
                 configMapKeyRef:
                   name: demok8s-configmap
                   key: HEALTH_MSG
+            - name: SPRING_PROFILES_ACTIVE
+              value: "local"

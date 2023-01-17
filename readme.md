@@ -19,6 +19,7 @@ minikube ip
 
 kubectl get all --all-namespaces
 kubectl get namespaces
+kubectl create namespace
 kubectl get svc
 kubectl describe service <svc_name>
 
@@ -37,3 +38,5 @@ helm list
 helm uninstall <release_name>
 
 helm install kafka ./deployment/kafka
+helm intall myhelm ./deployment/helm
+helm uninstall myhelm
