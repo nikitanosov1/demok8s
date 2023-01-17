@@ -19,4 +19,4 @@ spring:
     name: arch-demo-k8s
 
 app:
-  healthCheckMsg: ${HEALTH_MSG:OK}
+  healthCheckMsg: ${HEALTH_MSG:OKv1}
