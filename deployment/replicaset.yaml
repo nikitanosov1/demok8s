@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: demok8s-replicaset
+  labels:
+    app: demok8s-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demok8s-app
+  template:
+    metadata:
+      labels:
+        app: demok8s-app
+    #далее идет описание, аналогичное блоку spec из пода
+    spec:
+      containers:
+        - name: demok8s
+          image: gurok/demok8s
+          ports:
+            - containerPort: 8000
+              name: app
+            - containerPort: 9090
+              name: actuator
+
+          livenessProbe:
+            httpGet:
+              port: 9090
+              path: /health
+            failureThreshold: 1
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              port: 8000
+              path: /health
+            failureThreshold: 1
+            periodSeconds: 10
+          startupProbe:
+            httpGet:
+              port: 8000
+              path: /health
+            failureThreshold: 30
+            periodSeconds: 10
