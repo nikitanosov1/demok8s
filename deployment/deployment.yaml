@@ -44,11 +44,11 @@ spec:
             failureThreshold: 30
             periodSeconds: 10
 
-          env:
-            - name: HEALTH_MSG
-              valueFrom:
-                configMapKeyRef:
-                  name: demok8s-configmap
-                  key: HEALTH_MSG
-            - name: SPRING_PROFILES_ACTIVE
-              value: "local"
+#          env:
+#            - name: HEALTH_MSG
+#              valueFrom:
+#                configMapKeyRef:
+#                  name: demok8s-configmap
+#                  key: HEALTH_MSG
+#            - name: SPRING_PROFILES_ACTIVE
+#              value: "local"
