@@ -4,15 +4,15 @@ metadata:
   name: demo-service
 spec:
   selector:
-    app: demok8s-app
+    app: demok8s-app #должно соответствовать лейблу пода
   ports:
     - protocol: TCP
       name: web
-      port: 8088
-      targetPort: 8000
+      port: 8088 #порт сервиса
+      targetPort: 8000 #порт пода (порт, который открыт для контейнера)
       # nodePort: 30181
     - protocol: TCP
       name: actuator
-      port: 9099
-      targetPort: 9090
+      port: 9099 #порт сервиса
+      targetPort: 9090 #порт пода (порт, который открыт для контейнера)
   type: NodePort

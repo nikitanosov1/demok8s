@@ -12,6 +12,7 @@ demok8s
 1. gradle build
 2. docker build -t gurok/demok8s:v2 .
 3. docker push gurok/demok8s:v2
+   docker run image -p 8080:8080 -d
 
 ### Проверка работоспособности:
 1. kubectl version
@@ -24,7 +25,7 @@ kubectl get nodes
 kubectl describe node minikube
 minikube ip
 
-Добавить днс имя кластера в etc/host. для винды C:\Windows\System32\drivers\etc (использовать полученный айпи)
+Добавить днс имя кластера в etc/hosts. для винды C:\Windows\System32\drivers\etc (использовать полученный айпи)
 
 ### Просмотр ресурсов кластера:
 kubectl get all --all-namespaces
@@ -50,7 +51,7 @@ helm list
 helm uninstall <release_name>
 
 helm install kafka ./deployment/kafka
-helm intall myhelm ./deployment/helm
+helm install myhelm ./deployment/helm
 helm uninstall myhelm
 
 ### Настройка nginx ingress балансировщика в кластеер:
