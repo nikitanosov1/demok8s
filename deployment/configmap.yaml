@@ -4,4 +4,4 @@ metadata:
   name: demok8s-configmap
   namespace: myspace
 data:
-  HEALTH_MSG: "hello from configmap"
+  FOO_MSG: "hello from configmap"

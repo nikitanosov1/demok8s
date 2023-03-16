@@ -15,7 +15,7 @@ spec:
         - containerPort: 9090
           name: actuator
       env: #переменные среды для запуска контейнера, переменная используется SpringBoot приложением
-        - name: HEALTH_MSG
+        - name: FOO_MSG
           value: "test"
 
       livenessProbe: #проба жизнеспособности приложения, что оно не зависло
@@ -27,12 +27,12 @@ spec:
       readinessProbe: #проба готовности приложения к приему трафика
         httpGet:
           port: 8000
-          path: /healthcheck
+          path: /foo
         failureThreshold: 1
         periodSeconds: 10
       startupProbe: #проба старта приложения
         httpGet:
           port: 8000
-          path: /healthcheck
+          path: /foo
         failureThreshold: 30
         periodSeconds: 10

@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: demok8s-configmap
 data:
-  HEALTH_MSG: "hello from configmap"
+  FOO_MSG: "hello from configmap"

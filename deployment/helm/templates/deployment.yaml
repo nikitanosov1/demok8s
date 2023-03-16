@@ -34,21 +34,21 @@ spec:
           readinessProbe:
             httpGet:
               port: 8000
-              path: /healthcheck
+              path: /foo
             failureThreshold: 1
             periodSeconds: 10
           startupProbe:
             httpGet:
               port: 8000
-              path: /healthcheck
+              path: /foo
             failureThreshold: 30
             periodSeconds: 10
 
           env:
-            - name: HEALTH_MSG
+            - name: FOO_MSG
               valueFrom:
                 configMapKeyRef:
                   name: demok8s-configmap
-                  key: HEALTH_MSG
+                  key: FOO_MSG
             - name: SPRING_PROFILES_ACTIVE
               value: "local"

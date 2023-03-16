@@ -12,7 +12,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/healthcheck",
+					"raw": "http://localhost:8080/foo",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -53,7 +53,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://192.168.59.107:31267/healthcheck",
+					"raw": "http://192.168.59.107:31267/foo",
 					"protocol": "http",
 					"host": [
 						"192",
@@ -75,7 +75,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://minikube/healthcheck",
+					"raw": "http://minikube/foo",
 					"protocol": "http",
 					"host": [
 						"minikube"

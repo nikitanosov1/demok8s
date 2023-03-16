@@ -33,12 +33,12 @@ spec:
           readinessProbe:
             httpGet:
               port: 8000
-              path: /healthcheck
+              path: /foo
             failureThreshold: 1
             periodSeconds: 10
           startupProbe:
             httpGet:
               port: 8000
-              path: /healthcheck
+              path: /foo
             failureThreshold: 30
             periodSeconds: 10

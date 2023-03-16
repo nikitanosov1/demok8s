@@ -5,16 +5,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HealthController {
+public class FooController {
 
-    @Value("${app.healthCheckMsg}")
+    @Value("${app.fooMsg}")
     private String msg;
 
-    @GetMapping("/healthcheck")
-    public HealthCheck healthCheck() {
+    @GetMapping("/foo")
+    public Foo healthCheck() {
         System.out.println("request");
-        return HealthCheck.builder()
-                .status(HealthCheck.Status.OK)
+        return Foo.builder()
+                .status(Foo.Status.OK)
                 .msg(this.msg)
                 .build();
     }

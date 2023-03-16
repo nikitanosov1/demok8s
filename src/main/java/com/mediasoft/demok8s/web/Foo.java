@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class HealthCheck {
+public class Foo {
 
     private Status status;
 
