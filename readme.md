@@ -68,3 +68,6 @@ minikube addons disable ingress
     kubectl get ValidatingWebhookConfiguration
     kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
     ```
+
+Приложение с подключенной БД, kafka и рест-взаимодействиями:
+[**Интерцессор. Сервис-оркестартор распределенного процесса**](https://github.com/GUR-ok/arch-brokerage-intercessor)
