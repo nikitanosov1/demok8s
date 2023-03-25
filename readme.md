@@ -12,7 +12,7 @@ demok8s
 1. gradle build
 2. docker build -t gurok/demok8s:v2 .
 3. docker push gurok/demok8s:v2
-   docker run image -p 8080:8080 -d
+   docker run -p 8080:8080 -d image
 
 ### Проверка работоспособности:
 1. kubectl version

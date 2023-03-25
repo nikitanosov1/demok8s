@@ -16,13 +16,15 @@ spec:
           name: actuator
       env: #переменные среды для запуска контейнера, переменная используется SpringBoot приложением
         - name: FOO_MSG
-          value: "test"
+          value: "testEnvVarFromManifest"
+        - name: SPRING_PROFILES_ACTIVE
+          value: "local"
 
-      livenessProbe: #проба жизнеспособности приложения, что оно не зависло
+      startupProbe: #проба старта приложения
         httpGet:
-          port: 9090
-          path: /health
-        failureThreshold: 3
+          port: 8000
+          path: /foo
+        failureThreshold: 30
         periodSeconds: 10
       readinessProbe: #проба готовности приложения к приему трафика
         httpGet:
@@ -30,9 +32,9 @@ spec:
           path: /foo
         failureThreshold: 1
         periodSeconds: 10
-      startupProbe: #проба старта приложения
+      livenessProbe: #проба жизнеспособности приложения, что оно не зависло
         httpGet:
-          port: 8000
-          path: /foo
-        failureThreshold: 30
+          port: 9090
+          path: /health
+        failureThreshold: 3
         periodSeconds: 10
