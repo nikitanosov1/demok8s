@@ -54,11 +54,11 @@ helm install kafka ./deployment/kafka
 helm install myhelm ./deployment/helm
 helm uninstall myhelm
 
-### Настройка nginx ingress балансировщика в кластеер:
+### Настройка nginx ingress балансировщика в кластере:
 minikube addons enable ingress
 minikube addons disable ingress
 
-- В случае ошибки при делое приложения через helm
+- В случае ошибки при деплое приложения через helm
 
   Error: INSTALLATION FAILED: Internal error occurred: failed calling webhook "validate.nginx.ingress.kubernetes.io": Post "https://ingress-nginx-controller-admission.ingress-nginx.svc:4
   43/networking/v1/ingresses?timeout=10s": dial tcp 10.111.50.42:443: connect: connection refused
