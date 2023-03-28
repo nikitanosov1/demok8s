@@ -5,8 +5,8 @@ metadata:
   labels:
     app: demok8s-app
 spec:
-#  strategy:
-#    type: RollingUpdate #еще есть Recreate
+  #  strategy:
+  #    type: RollingUpdate #еще есть Recreate
   replicas: 3
   selector:
     matchLabels:
@@ -18,18 +18,18 @@ spec:
     spec:
       containers:
         - name: demok8s-app
-          image: gurok/demok8s:latest
+          image: nikitanosov1/demok8s:v2
           ports:
             - containerPort: 8000
               name: app
             - containerPort: 9090
               name: actuator
 
-          livenessProbe:
+          startupProbe:
             httpGet:
-              port: 9090
-              path: /health
-            failureThreshold: 3
+              port: 8000
+              path: /foo
+            failureThreshold: 30
             periodSeconds: 10
           readinessProbe:
             httpGet:
@@ -37,15 +37,17 @@ spec:
               path: /foo
             failureThreshold: 1
             periodSeconds: 10
-          startupProbe:
+          livenessProbe:
             httpGet:
-              port: 8000
-              path: /foo
-            failureThreshold: 30
+              port: 9090
+              path: /health
+            failureThreshold: 3
             periodSeconds: 10
-
+#
 #          env:
 #            - name: FOO_MSG
+#              value: "hello from v2 deployment"
+
 #              valueFrom:
 #                configMapKeyRef:
 #                  name: demok8s-configmap

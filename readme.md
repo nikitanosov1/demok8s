@@ -71,3 +71,9 @@ minikube addons disable ingress
 
 Приложение с подключенной БД, kafka и рест-взаимодействиями:
 [**Интерцессор. Сервис-оркестартор распределенного процесса**](https://github.com/GUR-ok/arch-brokerage-intercessor)
+
+
+
+
+kubectl describe node minikube
+kubectl apply -f .\deployment\deployment.yaml

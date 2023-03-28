@@ -8,11 +8,11 @@ spec:
   ports:
     - protocol: TCP
       name: web
-      port: 8088 #порт сервиса
+      port: 8080 #порт сервиса
       targetPort: 8000 #порт пода (порт, который открыт для контейнера)
       # nodePort: 30181
     - protocol: TCP
       name: actuator
       port: 9099 #порт сервиса
       targetPort: 9090 #порт пода (порт, который открыт для контейнера)
-  type: NodePort
+  type: ClusterIP
