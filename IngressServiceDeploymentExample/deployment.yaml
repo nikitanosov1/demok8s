@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demok8s-deployment
+  labels:
+    app: demok8s-app
+spec:
+  #  strategy:
+  #    type: RollingUpdate #еще есть Recreate
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demok8s-app
+  template:
+    metadata:
+      labels:
+        app: demok8s-app
+    spec:
+      containers:
+        - name: demok8s-app
+          image: nikitanosov1/demok8s:v2
+          ports:
+            - containerPort: 8000
+              name: app
+            - containerPort: 9090
+              name: actuator
+
+          startupProbe:
+            httpGet:
+              port: 8000
+              path: /foo
+            failureThreshold: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              port: 8000
+              path: /foo
+            failureThreshold: 1
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              port: 9090
+              path: /health
+            failureThreshold: 3
+            periodSeconds: 10
+#
+#          env:
+#            - name: FOO_MSG
+#              value: "hello from v2 deployment"
+
+#              valueFrom:
+#                configMapKeyRef:
+#                  name: demok8s-configmap
+#                  key: FOO_MSG
+#            - name: SPRING_PROFILES_ACTIVE
+#              value: "local"
