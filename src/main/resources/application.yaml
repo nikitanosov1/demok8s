@@ -13,10 +13,23 @@ management:
         include: health,prometheus
 
 spring:
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:none}
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    properties:
+      hibernate:
+        default_schema: public
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432}/${DATABASE_NAME:postgres}?currentSchema=${DATABASE_SCHEMA:public}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:1608}
+    driverClassName: org.postgresql.Driver
   liquibase:
-    enabled: false
+    change-log: classpath:/db/changelog/db_master_changelog.xml
+    enabled: true
   application:
     name: arch-demo-k8s
 
 app:
-  fooMsg: ${FOO_MSG:OKv4}
+  fooMsg: ${FOO_MSG:OKv1}

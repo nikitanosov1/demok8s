@@ -1,0 +1,9 @@
+apiVersion: v2
+name: demok8s2
+version: 1.0.0
+description: DemoK8s
+type: application
+maintainers:
+  - name: Nikita Nosov
+    email: nikinosov2002@mail.ru
+appVersion: 1.0.0
